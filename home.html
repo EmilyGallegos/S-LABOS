@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sistema de Sílabos</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<div class="logo-container">
+  <img src="LOGO ULEAM.png" alt="Logo del sistema" class="logo">
+</div>
+<body>
+
+  <div class="form-container">
+    <h2>Búsqueda de Sílabos</h2>
+    <form id="formBusqueda">
+      <label for="carrera">Carrera</label>
+      <select id="carrera">
+        <option value="Todos">Todos</option>
+        <option value="Tecnologías de la información">Tecnologías de la Información</option>
+        <option value="Ingeniería de Software">Ingeniería de Software</option>
+      </select>
+
+      <label for="asignatura">Asignatura</label>
+      <select id="asignatura">
+        <option value="Todos">Todos</option>
+        <option value="Base de datos">Base de Datos</option>
+        <option value="Sistemas digitales">Sistemas Digitales</option>
+        <option value="Mineria de datos">Minería de Datos</option>
+        <option value="Redes de computadoras">Redes de Computadoras</option>
+        <option value="Interfaces humano computador">Interfaces Humano Computador</option>
+      </select>
+
+      <label for="docente">Docente</label>
+      <select id="docente">
+        <option value="Todos">Todos</option>
+        <option value="Juan Pérez">Juan Pérez</option>
+        <option value="María González">María González</option>
+        <option value="Carlos López">Carlos López</option>
+        <option value="Ana Martínez">Ana Martínez</option>
+        <option value="Diego Tumbaco">Diego Tumbaco</option>
+        <option value="Genesis Delgado">Genesis Delgado</option>
+        <option value="Jaime Vera">Jaime Vera</option>
+        <option value="Carelys Zambrano">Carelys Zambrano</option>
+      </select>
+
+      <button type="submit">Buscar</button>
+    </form>
+
+    <table id="resultado">
+      <thead>
+        <tr>
+          <th>Asignatura</th>
+          <th>Docente</th>
+          <th>Carrera</th>
+          <th>Período</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    const silabos = [
+      { asignatura: "Redes de computadoras", docente: "Juan Pérez", carrera: "Tecnologías de la información", periodo: "2024-I", url: "https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/177801/mod_resource/content/1/TI_5_AplicacionesWebI_PatriciaQuirozPalma.pdf" },
+      { asignatura: "Base de datos", docente: "Juan Pérez", carrera: "Tecnologías de la información", periodo: "2024-I", url: "https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/177801/mod_resource/content/1/TI_5_AplicacionesWebI_PatriciaQuirozPalma.pdf" },
+      { asignatura: "Mineria de datos", docente: "María González", carrera: "Tecnologías de la información", periodo: "2023-II", url: "https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/177801/mod_resource/content/1/TI_5_AplicacionesWebI_PatriciaQuirozPalma.pdf" },
+      { asignatura: "Mineria de datos", docente: "Carlos López", carrera: "Tecnologías de la información", periodo: "2023-I", url: "https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/177801/mod_resource/content/1/TI_5_AplicacionesWebI_PatriciaQuirozPalma.pdf" },
+      { asignatura: "Base de datos", docente: "Ana Martínez", carrera: "Tecnologías de la información", periodo: "2022-II", url: "https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/177801/mod_resource/content/1/TI_5_AplicacionesWebI_PatriciaQuirozPalma.pdf" },
+      { asignatura: "Redes de computadoras", docente: "Diego Tumbaco", carrera: "Tecnologías de la información", periodo: "2024-I", url: "https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/177801/mod_resource/content/1/TI_5_AplicacionesWebI_PatriciaQuirozPalma.pdf" },
+      { asignatura: "Mineria de datos", docente: "Genesis Delgado", carrera: "Tecnologías de la información", periodo: "2023-II", url: "https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/177801/mod_resource/content/1/TI_5_AplicacionesWebI_PatriciaQuirozPalma.pdf" },
+      { asignatura: "Mineria de datos", docente: "Jaime Vera", carrera: "Tecnologías de la información", periodo: "2023-I", url: "https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/177801/mod_resource/content/1/TI_5_AplicacionesWebI_PatriciaQuirozPalma.pdf" },
+      { asignatura: "Base de datos", docente: "Carelys Zambrano", carrera: "Tecnologías de la información", periodo: "2022-II", url: "https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/177801/mod_resource/content/1/TI_5_AplicacionesWebI_PatriciaQuirozPalma.pdf" }
+    ];
+
+    document.getElementById("formBusqueda").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const carrera = document.getElementById("carrera").value;
+      const asignatura = document.getElementById("asignatura").value;
+      const docente = document.getElementById("docente").value;
+
+      const resultado = silabos.filter(s =>
+        (carrera === "Todos" || s.carrera === carrera) &&
+        (asignatura === "Todos" || s.asignatura === asignatura) &&
+        (docente === "Todos" || s.docente === docente)
+      );
+
+      const tbody = document.querySelector("#resultado tbody");
+      tbody.innerHTML = "";
+
+      resultado.forEach(s => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td>${s.asignatura}</td>
+          <td>${s.docente}</td>
+          <td>${s.carrera}</td>
+          <td><a href="${s.url}" target="_blank">${s.periodo}</a></td>
+        `;
+        tbody.appendChild(fila);
+      });
+    });
+  </script>
+  <footer>
+  <p>&copy; 2025 GALLEGOS DELGADO EMILY STEFANYA</p>
+</footer>
+
+</body>
+</html>

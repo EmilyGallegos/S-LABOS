@@ -1,0 +1,99 @@
+<!-- /docente.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <div class="logo-container">
+  <img src="LOGO ULEAM.png" alt="Logo del sistema" class="logo">
+</div>
+  <meta charset="UTF-8">
+  <title>Formulario de Sílabos - Docente</title>
+  <link rel="stylesheet" href="css/docentes.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Formulario de Ingreso de Sílabo</h2>
+    
+    <form id="form-silabo">
+
+      <!-- Información General -->
+      <section>
+        <h3>Información General</h3>
+        <input type="text" placeholder="Asignatura" name="asignatura" required>
+        <input type="text" placeholder="Código de la asignatura" name="codigo" required>
+        <input type="text" placeholder="Carrera" name="carrera" required>
+        <input type="text" placeholder="Ciclo" name="ciclo" required>
+        <input type="number" placeholder="Créditos" name="creditos" required>
+        <select name="tipo_asignatura">
+          <option value="Teorica">Teórica</option>
+          <option value="Práctica">Práctica</option>
+        </select>
+        <select name="modalidad">
+          <option value="Presencial">Presencial</option>
+          <option value="Virtual">Virtual</option>
+        </select>
+      </section>
+
+      <!-- Justificación y Objetivos -->
+      <section>
+        <h3>Justificación y Objetivos</h3>
+        <input type="text" placeholder="Justificación del curso" name="justificacion">
+        <input type="text" placeholder="Objetivo general" name="objetivo_general">
+
+        <h4>Objetivos específicos</h4>
+        <div id="objetivos-especificos">
+          <div class="fila">
+            <input type="text" placeholder="Unidad temática">
+            <input type="text" placeholder="Semanas">
+            <input type="text" placeholder="Actividad asociada">
+          </div>
+        </div>
+        <button type="button" onclick="agregarObjetivo()">+ Agregar objetivo</button>
+      </section>
+
+      <!-- Metodología -->
+      <section>
+        <h3>Metodología de Enseñanza</h3>
+        <textarea placeholder="Describe los métodos didácticos" name="metodologia"></textarea>
+      </section>
+
+      <!-- Evaluación -->
+      <section>
+        <h3>Evaluación</h3>
+        <div id="criterios-evaluacion">
+          <div class="fila">
+            <input type="text" placeholder="Criterio de evaluación">
+            <input type="text" placeholder="Ponderación">
+            <input type="text" placeholder="Semana">
+          </div>
+        </div>
+        <button type="button" onclick="agregarCriterio()">+ Agregar criterio</button>
+      </section>
+
+      <!-- Bibliografía -->
+      <section>
+        <h3>Bibliografía</h3>
+        <input type="text" placeholder="Bibliografía básica">
+        <input type="text" placeholder="Bibliografía complementaria">
+      </section>
+
+      <!-- Archivos -->
+      <section>
+        <h3>Archivos Adjunto</h3>
+        <input type="file" name="archivo_pdf">
+      </section>
+
+      <!-- Acciones -->
+      <section>
+        <button type="button" onclick="guardarBorrador()">Guardar como borrador</button>
+        <button type="submit">Enviar a revisión</button>
+      </section>
+    </form>
+  </div>
+
+  <script src="js/docente.js"></script>
+  <footer>
+  <p>&copy; 2025 GALLEGOS DELGADO EMILY STEFANYA</p>
+</footer>
+
+</body>
+</html>

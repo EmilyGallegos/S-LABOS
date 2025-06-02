@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <div class="logo-container">
+  <img src="LOGO ULEAM.png" alt="Logo del sistema" class="logo">
+</div>
+  <meta charset="UTF-8">
+  <title>Panel de Administrador</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-container">
+    <h1>Panel de Administrador</h1>
+
+    <div class="card">
+      <h2>Gestión de Usuarios</h2>
+      <button onclick="mostrarUsuarios()">Ver usuarios registrados</button>
+
+      <table id="tabla-usuarios" class="hidden">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filas generadas dinámicamente -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Configuración General</h2>
+      <button onclick="limpiarLocalStorage()">Limpiar base local</button>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+  <footer>
+  <p>&copy; 2025 GALLEGOS DELGADO EMILY STEFANYA</p>
+</footer>
+
+</body>
+</html>
